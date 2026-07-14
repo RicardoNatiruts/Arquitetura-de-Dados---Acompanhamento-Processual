@@ -29,7 +29,8 @@ A tabela ```demandas``` delega cálculos financeiros para o próprio motor do ba
 ```bash
 valor_total numeric(15, 2) generated always as (valor_unitario * quantidade_itens) stored
 ```
-### 💡 Tecnologias e Padrões: ```PostgreSQL```, ```PL/pgSQL```, ```DDL Padrão ISO```, ```DBeaver```.
+### 💡 Tecnologias e Padrões: 
+```PostgreSQL```, ```PL/pgSQL```, ```DDL Padrão ISO```, ```DBeaver```.
 
 
 <br>
