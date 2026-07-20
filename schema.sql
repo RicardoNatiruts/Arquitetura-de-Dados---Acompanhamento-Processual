@@ -2,9 +2,15 @@ drop table if exists fluxo cascade;
 drop table if exists fases cascade;
 drop table if exists modalidades cascade;
 drop table if exists setores cascade;
+drop table if exists usuarios cascade;
+drop table if exists processos cascade;
+drop table if exists logs cascade;
+drop table if exists demandas cascade;
+drop table if exists categorias_demandas cascade;
 drop type if exists tipo_perfil cascade;
 drop type if exists situacao_processo cascade;
 drop type if exists situacao_demanda cascade;
+drop type if exists tipo_tramitacao cascade;
 
 create type tipo_perfil as enum ('admin', 'agente', 'servidor', 'visitor');
 
@@ -29,6 +35,7 @@ create table modalidades(
 
 create table fases(
 	id serial primary key,
+	nome_fase VARCHAR(30) unique,
 	descricao_fase text not null
 );
 
@@ -40,6 +47,7 @@ create table fluxo(
 	id_setor int,
 	prazo int,
 	id_fase int,
+	ultima_etapa boolean default false,
 	
 	constraint fk_fluxo_modalidade foreign key (id_modalidade) REFERENCES modalidades(id) on delete cascade,
 	constraint FK_fluxo_setor foreign key (id_setor) references setores(id) on delete set null,
